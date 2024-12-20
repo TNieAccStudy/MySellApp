@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> test</h1>
+    <div id="area">
+        <textarea rows="5"></textarea>
+        <button type="button" onclick="add_html()" style="width: 50;">button</button>
+    </div>
+
+    <div id="text">
+        test
+    </div>
+
+
+    <script>
+        function add_html() {
+            html_add = `
+            <h1> hello everyone my name di test </h1>
+            `;
+            let e_add = document.getElementById("area");
+            e_add.innerHTML = e_add.getHTML() + html_add;
+
+
+
+            let text = document.getElementById("text");
+            let p_add = document.createElement("p");
+            p_add.textContent = "test_add_content";
+            // text.appendChild(p_add);
+            text.innerHTML += html_add;
+        }
+    </script>
+</body>
+
+</html>
