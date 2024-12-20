@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+    <div class="container-fluid">
+        <!-- Links -->
+
+        <a class="navbar-brand" href="/">eCommerce Website</a>
+
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/">Trang chủ</a>
+                </li>
+
+                {% if cur_user and cur_user.is_authenticated %}
+                <li>
+                    <a class="nav-link active btn btn-info" href="#">Hello {{ cur_user.name }}</a>
+                </li>
+                <li>
+                    <a href="/logout" class="btn btn-danger btn-margin">Logout</a>
+                </li>
+                <li>
+                    <a class="nav-link text-danger" href="/" style="padding: 0; margin: 0;">
+                        <img src="{{ cur_user.avatar }}" class="rounded-circle" width="40" height="40">
+                    </a>
+
+                </li>
+                {% else %}
+                <li>
+                    <a href="/login" class="btn btn-success btn-margin">Login</a>
+                </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="/cart">&#128722; <span class="badge bg-danger cart-counter">{{
+                        cart_stats.total_quantity }}</span></a>
+                </li>
+            </ul>
+            <form class="d-flex" action="/" method="get">
+                <input id="key-search" class="form-control me-2" type="text" placeholder="Search" name="kw">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+
+
+    </div>
+</nav>

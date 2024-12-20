@@ -1,0 +1,66 @@
+{% extends 'layout/base.html' %}
+
+{%block content %}
+
+{% if pgn > 1 %}
+<ul class="pagination mt-2">
+    {% for page in range(1, pgn+1) %}
+    <li class="page-item">
+        <a class="page-link" href="/?page={{ page }}">{{ page }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h1>DANH SACH CAC SAN PHAM</h1>
+
+<!-- <div>
+    <table>
+        <tr>
+            {% for p in pros %}
+            <td>
+                <div class="card">
+                    <img style= "width: 50%; height: 50%;" class="card-img-top" src="{{ p.image }}" alt="{{ p.name }}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ p.name }}</h4>
+                        <p class="card-text">{{ p.price }} VNĐ</p>
+                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                        <button class="btn btn-danger">Đặt hàng</button>
+                    </div>
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div> -->
+
+<div class="row">
+    {% for p in pros %}
+
+    <div class="col-md-3" style="margin-bottom: 20px;">
+        <div class="card">
+            <img style="width: 80%; height: 80%;" class="card-img-top" src="{{ p.image }}" alt="{{ p.name }}">
+            <div class="card-body">
+                <h4 class="card-title">{{ p.name }}</h4>
+                <p class="card-text">{{ p.price }} VNĐ</p>
+                <a href="/products/{{ p.id }}" class="btn btn-primary">Xem chi tiết</a>
+                <button class="btn btn-danger" onclick="addToCart({{ p.id }}, '{{ p.name }}', {{ p.price }})">Đặt hàng</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- {% for pro in pros %}
+
+{% endfor %} -->
+
+<!-- <style>
+    table tr {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        /* 4 cột */
+    }
+</style> -->
+
+{% endblock %}

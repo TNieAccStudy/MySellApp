@@ -1,0 +1,32 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+
+<h1 class="text-center text-danger mt-1">ĐĂNG NHẬP NGƯỜI DÙNG</h1>
+
+{% if cur_user.is_authenticated %}  
+<h1> YOU ARE LOGGING IN !</h1>
+<h1>{{ cur_user.name }} </h1>
+<h1>{{ cur_user.username }}</h1>
+{% else %}
+<form action="/login" method="post">
+  <div class="mb-3 mt-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">Password:</label>
+    <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+  </div>
+  <div class="form-check mb-3">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" name="remember"> Remember me
+    </label>
+  </div class="col">
+  <button type="submit" class="btn btn-primary">Login</button>
+  <a href="/register" class="btn btn-success">Register</a>
+</form>
+{% endif %}
+
+
+{% endblock %}
